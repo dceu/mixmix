@@ -35,6 +35,13 @@ public class Ingredient extends AuditModel{
     @ManyToMany
     Set<Tag> tags;
 
+    
+    // Set<Double> measures = new HashSet<Double>();
+
+    
+    // Set<String> units = new HashSet<String>();
+
+
 
 // Setters
 
@@ -80,5 +87,22 @@ public class Ingredient extends AuditModel{
         this.id = id;
     }
 
+
+    // public Set<Double> getMeasures() {
+    //     return this.measures;
+    // }
+
+    // public void setMeasures(Set<Double> measures) {
+    //     this.measures = measures;
+    // }
+
+    // public Set<String> getUnits() {
+    //     return this.units;
+    // }
+
+    // public void setUnits(Set<String> units) {
+    //     this.units = units;
+    // }
+    
 
 }

@@ -27,6 +27,8 @@ public class UserRecipe extends  AuditModel{
     @Size(max = 250)
     private String description;
 
+    private String glass;
+
 
     @ManyToMany
     @JoinTable(
@@ -36,6 +38,7 @@ public class UserRecipe extends  AuditModel{
     )
     private List<Ingredient> ingredients;
 
+    
     
     @Lob
     private String preparation;
@@ -93,4 +96,11 @@ public class UserRecipe extends  AuditModel{
         this.preparation = preparation;
     }
 
+    public String getGlass(){
+        return this.glass;
+    }
+
+    public void setGlass(String glass){
+        this.glass = glass;
+    }
 }

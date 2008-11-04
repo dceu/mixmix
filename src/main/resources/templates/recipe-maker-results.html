@@ -24,7 +24,7 @@
                 <td><p th:text="${resultsForm.description}"></p></td>
                 <td><p th:text="${resultsForm.glass}"></p></td>
                 <td><p th:each="row : ${resultsForm.ingredientRows}" th:text="${row}"></p></td>
-                <td><p th:text="${resultsForm.preparation}"></p></td>
+                <td><p th:each="instruction : ${resultsForm.preparation}" th:text="${instruction}"></p></td>
                 <td><p th:text="createdby"></p></td>
             </tr>
 

@@ -8,17 +8,18 @@ public class RecipeMakerForm{
     private String glass;
     private String title;
     private String description;
-    private List<Row> ingredientRows = new ArrayList<Row>();
-    private String preparation;
+    private List<ingredientRow> ingredientRows = new ArrayList<ingredientRow>();
+    private List<prepRow> preparation;
+    private String user;
 
     public RecipeMakerForm(){
         // this.ingredientRows.add(new Row("Water","1","CL"));
     }
 
-    public static class Row{
-        public Row(){};
+    public static class ingredientRow{
+        public ingredientRow(){};
 
-        public Row(String ingredient, String measure, String unit){
+        public ingredientRow(String ingredient, String measure, String unit){
             this.ingredient = ingredient;
             this.measure = measure;
             this.unit = unit;
@@ -59,6 +60,29 @@ public class RecipeMakerForm{
         
     }
 
+    public static class prepRow{
+        public prepRow(){};
+
+        public prepRow(String instruction){
+            this.instruction = instruction;
+        }
+
+        private String instruction;
+
+        @Override 
+        public String toString(){
+            return instruction;
+        }
+
+        public void setInstruction(String s){
+            this.instruction = s;
+        }
+
+        public String getInstruction(){
+            return instruction;
+        }
+    }
+
     // Getters & Setters
 
     public String getGlass() {
@@ -85,21 +109,31 @@ public class RecipeMakerForm{
         this.description = description;
     }
 
-    public List<Row> getIngredientRows() {
+    public List<ingredientRow> getIngredientRows() {
         return this.ingredientRows;
     }
 
-    public void setIngredientRows(List<Row> ingredientRows) {
+    public void setIngredientRows(List<ingredientRow> ingredientRows) {
         this.ingredientRows = ingredientRows;
     }
 
-    public String getPreparation() {
+    public List<prepRow> getPreparation() {
         return this.preparation;
     }
 
-    public void setPreparation(String preparation) {
+    public void setPreparation(List<prepRow> preparation) {
         this.preparation = preparation;
     }
+
+    public String getUser(){
+        return this.user;
+    }
+
+    public void setUser(String user){
+        this.user = user;
+
+    }
+    
 
 
 
