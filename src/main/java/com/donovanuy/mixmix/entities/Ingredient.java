@@ -15,6 +15,16 @@ public class Ingredient{
     @GeneratedValue
     private int id;
     
+    public Ingredient(String n, String d){
+        this.setName(n);
+        this.setDescription(d);
+    }
+
+    public Ingredient(int id, String n, String d){
+        this.setId(id);
+        this.setName(n);
+        this.setDescription(d);
+    }
 // Setters
 
 
