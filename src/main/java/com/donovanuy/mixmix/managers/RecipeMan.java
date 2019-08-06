@@ -11,13 +11,13 @@ public class RecipeMan{
         return instance;
     }
 
-    private Recipe newTitledRecipe(String s){
-        return new Recipe(s);
-    }
+    // private Recipe newTitledRecipe(String s){
+    //     return new Recipe(s);
+    // }
 
-    private Recipe newUntitledRecipe(){
-       return new Recipe("Untitled");
-    }
+    // private Recipe newUntitledRecipe(){
+    //    return new Recipe("Untitled");
+    // }
 
     
 }
