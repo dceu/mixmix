@@ -12,6 +12,7 @@ import javax.validation.constraints.Email;
 
 
 @Entity // tells Hibernate to make a table out of this class
+
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
