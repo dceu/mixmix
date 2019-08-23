@@ -2,29 +2,32 @@ package com.donovanuy.mixmix.entities;
 
 import java.util.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="pantry")
 public class Ingredient{
+
+    @Column(name = "ingredient")
     private String name;
+    @Column(name="description")
     private String description;
 
     @Id
     @GeneratedValue
-    private int id;
+    @Column(name="IngredientID")
+    private long id;
     
-    public Ingredient(String n, String d){
-        this.setName(n);
-        this.setDescription(d);
-    }
+    // public Ingredient(String n, String d){
+    //     this.setName(n);
+    //     this.setDescription(d);
+    // }
 
-    public Ingredient(int id, String n, String d){
-        this.setId(id);
-        this.setName(n);
-        this.setDescription(d);
-    }
+    // public Ingredient(int id, String n, String d){
+    //     this.setId(id);
+    //     this.setName(n);
+    //     this.setDescription(d);
+    // }
 // Setters
 
 
@@ -44,11 +47,11 @@ public class Ingredient{
         this.description = description;
     }
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
