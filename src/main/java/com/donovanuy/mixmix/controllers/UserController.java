@@ -17,7 +17,7 @@ import com.donovanuy.mixmix.entities.User;
 
 
 @Controller 
-@RequestMapping(path="/demo")
+@RequestMapping("/users")
 public class UserController implements WebMvcConfigurer {
     @Autowired
     private UserRepository userRepository;
@@ -29,12 +29,12 @@ public class UserController implements WebMvcConfigurer {
 
     }
 
-    @GetMapping("/form")
+    @GetMapping("/new")
     public String showForm(User user) { 
         return "form";
     }
 
-    @PostMapping("/form")
+    @PostMapping("/new")
     public String checkPersonInfo(@Valid User user,
          BindingResult bindingResult){
         
