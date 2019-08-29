@@ -24,16 +24,24 @@
         </thead>
         <tbody>
             <tr th:each="ingredient : ${listIngredients}">
-                <td th:text="${ingredient.id}">IngredientID</td>
+                <td >
+                        <a th:href="@{'/ingredients/ingredient/'+ ${ingredient.id}}"
+                        th:text="${ingredient.id}">id</a>
+                    
+                </td>
+                
                 <td th:text="${ingredient.name}">Name</td>
                 <td th:text="${ingredient.description}">Description</td>
                 <!-- <td th:text="${ingredient.img}">Img</td>
                 <td th:text="${ingredient.ingredients}">Ingredients</td>
                 <td th:text="${ingredient.preparation}">Preparation</td> -->
                 <td>
-                    <a th:href="@{'/edit/' + ${ingredient.id}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${ingredient.id}}">Delete</a>
+                    <!-- <a th:href="@{'/edit/' + ${ingredient.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp; -->
+                    <form th:action="@{'/ingredients/ingredient/' + ${ingredient.id}}" th:method="POST">
+                        <input type="hidden" name ="_method" value="DELETE" />
+                        <button type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
         </tbody>
