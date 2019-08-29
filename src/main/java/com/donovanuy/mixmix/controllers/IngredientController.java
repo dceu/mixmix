@@ -8,11 +8,14 @@ import javax.persistence.Id;
 
 
 import com.donovanuy.mixmix.entities.Ingredient;
+import com.donovanuy.mixmix.entities.ResourceNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.http.ResponseEntity;
 
 @Controller
 @RequestMapping(path="/ingredients")
@@ -21,7 +24,7 @@ public class IngredientController {
     @Autowired
     IngredientRepository ingredientRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public String viewPantry(Model model){
         List<Ingredient> listIngredients = ingredientRepository.findAll();
         model.addAttribute("listIngredients", listIngredients);
@@ -44,15 +47,23 @@ public class IngredientController {
     @RequestMapping(value = "/ingredient/new/save", method = RequestMethod.POST)
     public String saveIngredient(@ModelAttribute("ingredient") Ingredient ingredient){
         ingredientRepository.save(ingredient);
-        return "redirect:/ingredients/all";
+        return "redirect:../../";
     }
 
     @GetMapping("/ingredient/{id}")
-    public Ingredient show(@PathVariable String id){
+    public String show(@PathVariable String id, Model model){
         
         Integer ingredId = Integer.parseInt(id);
         Long l = ingredId.longValue();
-        return ingredientRepository.getOne(l);
+        model.addAttribute("ingredient", ingredientRepository.getOne(l));
+        return "ingredient";
+    }
+
+    @DeleteMapping("/ingredient/{ingredientId}")
+    public String deleteIngredient(@PathVariable long ingredientId){
+            
+            ingredientRepository.deleteById(ingredientId);
+            return "redirect:../";
     }
 
     
