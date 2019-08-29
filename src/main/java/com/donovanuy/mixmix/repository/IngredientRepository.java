@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
     List<Ingredient> findAllById(Long id);
+    Ingredient getOne(Long id);
+    public void deleteById(Long Id);
 }
