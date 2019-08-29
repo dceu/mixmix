@@ -5,8 +5,8 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name="pantry")
-public class Ingredient{
+@Table(name = "ingredients_master")
+public class Ingredient extends AuditModel{
 
     @Column(name = "ingredient")
     private String name;
@@ -15,7 +15,6 @@ public class Ingredient{
 
     @Id
     @GeneratedValue
-    @Column(name="IngredientID")
     private long id;
     
     // public Ingredient(String n, String d){
@@ -28,7 +27,33 @@ public class Ingredient{
     //     this.setName(n);
     //     this.setDescription(d);
     // }
+
+
+    @ManyToMany(mappedBy = "ingredients")
+    Set<UserRecipe> recipes;
+
+    @ManyToMany
+    Set<Tag> tags;
+
+
 // Setters
+
+    public Set<UserRecipe> getRecipes() {
+        return this.recipes;
+    }
+
+    public void setRecipes(Set<UserRecipe> recipes) {
+        this.recipes = recipes;
+    }
+
+
+    public Set<Tag> getTags(){
+        return this.tags;
+    }
+
+    public void setTags(Set<Tag> tags){
+        this.tags = tags;
+    }
 
 
     public String getName() {
