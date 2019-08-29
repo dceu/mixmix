@@ -1,0 +1,42 @@
+<title>Create New Ingredient</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Create New Recipe</h1>
+        <br />
+        <form action="#" th:action="@{/recipes/userRecipes/new/save}" th:object="${userRecipe}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Recipe Name:</td>
+                    <td><input type="text" th:field="*{title}" /></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" th:field="*{description}" /></td>
+                </tr>
+                <tr>
+                    <td>Ingredients:</td>
+                    <td>
+                    <ul>
+                        <li th:each="ingredient : ${allIngredients}">
+                            <input type = "checkbox" th:name="sel_ingredients" th:value="${ingredient.id}" />
+                            <label th:text="${ingredient.name}">Heating</label>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>Tags:</td>
+                    <td><input type ="text" th:field="*{tags}" /></td>
+                </tr> -->
+                                          
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
