@@ -85,14 +85,14 @@ public class RecipeController {
         return recipeMan.saveUserRecipe(ur);
     }
 
-    @RequestMapping("/userRecipes/new")
+    @GetMapping("/userRecipes/new")
     public String createNewUserRecipe(Model model){
         UserRecipe userRecipe = new UserRecipe();
         model.addAttribute("userRecipe", userRecipe);
         return "new-recipe";
     }
 
-    @RequestMapping(value = "/userRecipes/new/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/userRecipes/new/save", method = RequestMethod.POST, consumes ="application/json")
     public String saveRecipe(
         @Valid
         @RequestBody UserRecipe userRecipe,
@@ -107,6 +107,16 @@ public class RecipeController {
         return "redirect:../";
     }
 
+    @RequestMapping(value = "/userRecipes/new/save", method = RequestMethod.POST, consumes ="application/x-www-form-urlencoded")
+    public String saveRecipe(UserRecipe userRecipe){
+        // for(long l : sel_ingredients){
+        //     Ingredient ing = new Ingredient();
+        //     ing = ingredientRepo.getOne(l);
+        //     userRecipe.addIngredient(ing);
+        // }
+        userRecipeRepo.save(userRecipe);
+        return "redirect:../";
+        }
 
 
     @ModelAttribute
