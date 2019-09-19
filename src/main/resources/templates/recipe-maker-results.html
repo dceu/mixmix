@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Glass</th>
+                <th>Ingredients</th>
+                <th>Preparation</th>
+                <th>CreatedBy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><p th:text="${resultsForm.title}"></p></td>
+                <td><p th:text="${resultsForm.description}"></p></td>
+                <td><p th:text="${resultsForm.glass}"></p></td>
+                <td><p th:each="row : ${resultsForm.ingredientRows}" th:text="${row}"></p></td>
+                <td><p th:text="${resultsForm.preparation}"></p></td>
+                <td><p th:text="createdby"></p></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
