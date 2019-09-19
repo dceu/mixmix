@@ -8,33 +8,33 @@
 <body>
 <div align="center">
     <h1>Recipe List</h1>
-    <a href="/new">Create New Recipe</a>
+    <a href="/recipes/userRecipes/new">Create New Recipe</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>Recipe ID</th>
+               
                 <th>Name</th>
                 <th>Description</th>
-                <th>Img</th>
+                <!-- <th>Img</th> -->
                 <th>Ingredients</th>
                 <th>Preparation</th>
-                <th>Actions</th>
+                <!-- <th>Actions</th> -->
             </tr>
         </thead>
         <tbody>
-            <tr th:each="recipe : ${listRecipes}">
-                <td th:text="${recipe.RecipeId}">Recipe ID</td>
-                <td th:text="${recipe.name}">Name</td>
-                <td th:text="${recipe.description}">Description</td>
-                <td th:text="${recipe.img}">Img</td>
-                <td th:text="${recipe.ingredients}">Ingredients</td>
-                <td th:text="${recipe.preparation}">Preparation</td>
-                <td>
-                    <a th:href="@{'/edit/' + ${recipe.RecipeId}}">Edit</a>
+            <tr th:each="recipe : ${userRecipeList}">
+                
+                <td th:text="*{recipe.title}">Name</td>
+                <td th:text="*{recipe.description}">Description</td>
+                <!-- <td th:text="${recipe.img}">Img</td> -->
+                <td th:text="*{{recipe.ingredients}}">Ingredients</td>
+                <td th:text="*{recipe.preparation}">Preparation</td>
+                <!-- <td>
+                    <a th:href="@{'/edit/' + ${recipe.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
                     <a th:href="@{'/delete/' + ${recipe.RecipeId}}">Delete</a>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>
