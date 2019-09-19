@@ -8,15 +8,54 @@ public class RecipeMakerForm{
     private String glass;
     private String title;
     private String description;
-    private Set<Row> ingredientRows;
+    private List<Row> ingredientRows = new ArrayList<Row>();
     private String preparation;
 
-    private class Row{
+    public RecipeMakerForm(){
+        // this.ingredientRows.add(new Row("Water","1","CL"));
+    }
+
+    public static class Row{
         public Row(){};
+
+        public Row(String ingredient, String measure, String unit){
+            this.ingredient = ingredient;
+            this.measure = measure;
+            this.unit = unit;
+        }
 
         private String ingredient;
         private String measure;
         private String unit;
+
+        @Override
+        public String toString(){
+            return  measure + " " + unit + " " + ingredient ;
+        }
+
+        public String getIngredient(){
+            return this.ingredient;
+        }
+
+        public String getMeasure(){
+            return this.measure;
+        }
+
+        public String getUnit(){
+            return this.unit;
+        }
+
+        public void setIngredient(String i){
+            this.ingredient = i;
+        }
+
+        public void setMeasure(String m){
+            this.measure = m;
+        }
+
+        public void setUnit(String u){
+            this.unit = u;
+        }
         
     }
 
@@ -46,11 +85,11 @@ public class RecipeMakerForm{
         this.description = description;
     }
 
-    public Set<Row> getIngredientRows() {
+    public List<Row> getIngredientRows() {
         return this.ingredientRows;
     }
 
-    public void setIngredientRows(Set<Row> ingredientRows) {
+    public void setIngredientRows(List<Row> ingredientRows) {
         this.ingredientRows = ingredientRows;
     }
 
