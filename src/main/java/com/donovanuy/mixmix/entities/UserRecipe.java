@@ -36,7 +36,7 @@ public class UserRecipe extends  AuditModel{
     )
     private List<Ingredient> ingredients;
 
-    @NotNull
+    
     @Lob
     private String preparation;
 
