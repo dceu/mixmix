@@ -1,19 +1,31 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="default">
     <head>
         <title>MixMix: A Spring Boot Application</title>
         <meta http-equip="Content-type" content="text/html; charset=UTF-8" />
 
+       
+
     </head>
     <body>
-        <h1>Welcome to MixMix the mixology app for the adventurous and thrillseeking</h>
-            <ul><h2>Functionality:</h2>
-                <li>User Profile: personal, submitted recipes, favorites</li>
-                <li>Recipe Maker: Make a new Mix and share</li>
-                <li>Cocktail Recipe: Collect your ingredients, and Add instructions, generate flavor profile</li>
-            </ul>
-           <p><a href="/login">Login</a> and get started!</p>
+        <div layout:fragment="content" class= "jumbotron">
+            <h1>Welcome to MixMix the mixology app for the adventurous and thrillseeking</h>
+                <ul><h2>Functionality:</h2>
+                    <li>User Profile: personal, submitted recipes, favorites</li>
+                    <li>Recipe Maker: Make a new Mix and share</li>
+                    <li>Cocktail Recipe: Collect your ingredients, and Add instructions, generate flavor profile</li>
+                </ul>
+               <p><a href="/login">Login</a> and get started!</p>
+        </div>
            
     </body>
+
+    <!-- BootStrap JS -->
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+ integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
 </html>
