@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recipe Maker</title>
+</head>
+<body>
+    <form th:action="@{/recipeMaker/}" th:object="$recipeMakerForm" method="post">
+        <tr>
+            <td>Recipe Name:</td>
+            <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><textarea rows="4" cols="40" field="*{description}" ></textarea>
+                </td>
+        </tr>
+        <tr>
+            <td>Pick a glass:</td>
+            <td>
+                <select th:field="*{glass}">
+                    <option th:each="glass : ${glassware}"
+                            th:value="${glass}"
+                            th:text="#{${'glassware.glass.' + glass}}">Glass</option>
+                </select>
+
+            </td>
+        </tr>
+        
+
+    </form>
+
+    
+</body>
+</html>
