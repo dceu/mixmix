@@ -7,29 +7,86 @@
     <title>Recipe Maker</title>
 </head>
 <body>
-    <form th:action="@{/recipeMaker/}" th:object="$recipeMakerForm" method="post">
-        <tr>
-            <td>Recipe Name:</td>
-            <td><input type="text" th:field="*{title}" /></td>
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td><textarea rows="4" cols="40" field="*{description}" ></textarea>
-                </td>
-        </tr>
-        <tr>
-            <td>Pick a glass:</td>
-            <td>
-                <select th:field="*{glass}">
-                    <option th:each="glass : ${glassware}"
-                            th:value="${glass}"
-                            th:text="#{${'glassware.glass.' + glass}}">Glass</option>
-                </select>
-
-            </td>
-        </tr>
+    <form th:action="@{/recipeMaker/}" th:object="${recipeMakerForm}" method="post">
         
+        <table>
+            <tr>
+                <td>Recipe Name:</td>
+                <td><input type="text" th:field="*{title}" /></td>
+            </tr>
+            
+            <tr>
+                <td>Description:</td>
+                <td><textarea rows="4" cols="40" th:field="*{description}" ></textarea>
+                    </td>
+            </tr>
+            <tr>
+                <td>Pick a glass:</td>
+                <td>
+                    <select th:field="*{glass}">
+                        <option th:each="glass : ${glassware}"
+                                th:value="${glass}"
+                                th:text="${glass}">Glass</option>
+                    </select>
+    
+                </td>
+            </tr>
+            <tr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th >#</th>
+                            <th >Ingredient</th>
+                            <th >Measure</th>
+                            <th >Unit</th>
+                            <th>
+                                <button type="submit" name="addRow" >Add Ingredient</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="row,rowStat : *{ingredientRows}">
+                            <td th:text="${rowStat.count}">0</td>
+                            <td>
+                                <select th:field="*{ingredientRows[__${rowStat.index}__].ingredient}">
+                                    <option th:each="ingredient : ${allIngredients}"
+                                            th:value="${ingredient.name}"
+                                            th:text="${ingredient.name}">Water</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" th:field="*{ingredientRows[__${rowStat.index}__].measure}" />
+                            </td>
+                            <td>
+                                <select th:field="*{ingredientRows[__${rowStat.index}__].unit}">
+                                    <option th:each="unit : ${units}"
+                                            th:value="${unit}"
+                                            th:text="${unit}">litres</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" name="removeRow"
+                                        th:value="${rowStat.index}" th:text="Remove">Remove row</button>
+                            </td>
+    
+                        </tr>
+                    </tbody>
 
+    
+    
+                </table>
+            </tr>
+            <tr></tr>
+            <tr>
+                    <td>Preparation:</td>
+                    <td><textarea rows="4" cols="40" th:field="*{preparation}" ></textarea>
+                        </td>
+                </tr>
+            <tr><td><button type="submit" name="save" th:text="Save">Save Recipe</button></td></tr>
+        </table>
+
+        
+        
     </form>
 
     
