@@ -34,6 +34,11 @@ private SecurityService securityService;
 @Autowired
 private UserValidator userValidator;
 
+@ModelAttribute
+public void userDetails(Model model){
+    model.addAttribute("user", securityService.findLoggedInUsername());
+}
+
 @RequestMapping(value = "/registration", method = RequestMethod.GET)
 public String registration(Model model) {
     model.addAttribute("userForm", new User());
@@ -71,5 +76,10 @@ public String login(Model model, String error, String logout) {
 @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 public String welcome(Model model) {
     return "index";
+}
+
+@RequestMapping(value = {"/dashboard"}, method = RequestMethod.GET)
+public String dashboard(Model model){
+    return "dashboard";
 }
 }
