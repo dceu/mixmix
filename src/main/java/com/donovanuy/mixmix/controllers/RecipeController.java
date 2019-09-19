@@ -40,6 +40,16 @@ public class RecipeController {
     @Autowired
     private IngredientRepository ingredientRepo;
 
+    @ModelAttribute
+    public void populateLists(Model model){
+        List<Ingredient> ingredientList = this.ingredientRepo.findAll();
+        //Iterator<Ingredient> itr = ingredientList.iterator();
+        model.addAttribute("allIngredients", ingredientList);
+        List<UserRecipe> userRecipeList = this.userRecipeRepo.findAll();
+        model.addAttribute("userRecipeList", userRecipeList);
+        
+    }
+
 
     @GetMapping("/")
     public String viewAllRecipes(Model model){
@@ -75,15 +85,20 @@ public class RecipeController {
 
     //User Recipe Actions
 
-    @GetMapping("/userRecipes")
-    public Page<UserRecipe> getAllUserRecipes(Pageable pageable){
-        return recipeMan.listAllUserRecipes(pageable);
+    @GetMapping("/userRecipes/")
+    public String getAllUserRecipes(Model model){
+        return "userRecipes";
     }
 
-    @PostMapping("/userRecipes")
-    public UserRecipe createRecipe(@Valid @RequestBody UserRecipe ur){
-        return recipeMan.saveUserRecipe(ur);
-    }
+    // @GetMapping("/userRecipes")
+    // public Page<UserRecipe> getAllUserRecipes(Pageable pageable){
+    //     return recipeMan.listAllUserRecipes(pageable);
+    // }
+
+    // @PostMapping("/userRecipes")
+    // public UserRecipe createRecipe(@Valid @RequestBody UserRecipe ur){
+    //     return recipeMan.saveUserRecipe(ur);
+    // }
 
     @GetMapping("/userRecipes/new")
     public String createNewUserRecipe(Model model){
@@ -119,13 +134,7 @@ public class RecipeController {
         }
 
 
-    @ModelAttribute
-    public void populateIngredients(Model model){
-        List<Ingredient> ingredientList = this.ingredientRepo.findAll();
-        //Iterator<Ingredient> itr = ingredientList.iterator();
-        model.addAttribute("allIngredients", ingredientList);
-        
-    }
+
 
     @PutMapping("/userRecipes/{userRecipeId}")
     public UserRecipe updateUserRecipe(@PathVariable Long userRecipeId, @Valid @RequestBody UserRecipe postRequest){
