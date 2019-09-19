@@ -21,7 +21,7 @@
                     <td>
                     <ul>
                         <li th:each="ingredient : ${allIngredients}">
-                            <input type = "checkbox" th:name="sel_ingredients" th:value="${ingredient.id}" />
+                            <input type = "checkbox" th:name="sel_ingredients" th:value="${ingredient.id}" th:field="*{ingredients}" />
                             <label th:text="${ingredient.name}">Heating</label>
                         </li>
                     </ul>
