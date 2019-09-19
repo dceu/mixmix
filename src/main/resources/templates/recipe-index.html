@@ -13,27 +13,27 @@
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>Recipe ID</th>
+                <!-- <th>Recipe ID</th> -->
+                <th>Img</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Img</th>
                 <th>Ingredients</th>
                 <th>Preparation</th>
-                <th>Actions</th>
-            </tr>
+                <!-- <th>Actions</th>
+            </tr> -->
         </thead>
         <tbody>
             <tr th:each="recipe : ${listRecipes}">
-                <td th:text="${recipe.RecipeId}">Recipe ID</td>
+                <!-- <td th:text="${recipe.RecipeId}">Recipe ID</td> -->
+                <td th:text="${recipe.img}">Img</td>
                 <td th:text="${recipe.name}">Name</td>
                 <td th:text="${recipe.description}">Description</td>
-                <td th:text="${recipe.img}">Img</td>
                 <td th:text="${recipe.ingredients}">Ingredients</td>
                 <td th:text="${recipe.preparation}">Preparation</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${recipe.RecipeId}}">Edit</a>
+                    <!-- <a th:href="@{'/edit/' + ${recipe.RecipeId}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${recipe.RecipeId}}">Delete</a>
+                    <a th:href="@{'/delete/' + ${recipe.RecipeId}}">Delete</a> -->
                 </td>
             </tr>
         </tbody>
